@@ -1,0 +1,11 @@
+{% capture post_header %}
+<div class="post-header">
+<p class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</p>
+<ol class="post-categories">
+{% for category in include.post.categories %}
+<li><a href="{{ category | uri_escape | prepend: '/categories/' | prepend: site.url }}">{{ category }}</a></li>
+{% endfor %}
+</ol>
+</div>
+{% endcapture %}
+{{ post_header | strip_newlines }}

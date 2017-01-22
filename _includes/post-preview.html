@@ -1,0 +1,8 @@
+{% assign parts = include.post.content | split:"<!-- more -->" %}
+{% assign parts_size = parts | size %}
+<div class="entry-summary post-content">
+{{ parts | first }}
+</div>
+{% if parts_size > 1 %}
+<p class="post-more-link"><a href="{{ include.post.url }}">Read more</a></p>
+{% endif %}

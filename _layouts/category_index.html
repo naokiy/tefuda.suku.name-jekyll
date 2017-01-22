@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="hfeed">
+    <div>Category: {{ page.category }}</div>
+    {% for category_tuple in site.categories %}
+    {% assign category_name_candidate = category_tuple | first %}
+    {% if category_name_candidate == page.category %}
+    {% for posts in category_tuple %}
+    {% for post in posts %}
+    {% if post.title != nil %}
+    <article class="hentry post">
+        {% include post-header.html post=post %}
+        <h1 class="entry-title post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+        {% include post-preview.html post=post %}
+        {% include post-footer.html post=post %}
+    </article>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+</div>
