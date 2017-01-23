@@ -3,7 +3,7 @@
 <p class="post__header__date">{{ include.post.date | date: "%Y-%m-%d" }}</p>
 <ol class="post__header__categories">
 {% for category in include.post.categories %}
-<li><a href="{{ category | uri_escape | prepend: '/categories/' | prepend: site.url }}">{{ category }}</a></li>
+<li><a href="{{ category | uri_escape | prepend: '/categories/' | prepend: site.url }}/">{{ category }}</a></li>
 {% endfor %}
 </ol>
 </div>
