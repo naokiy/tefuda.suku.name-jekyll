@@ -40,4 +40,6 @@ Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
     %w[yes y true 1].include?(ENV['SKIP_COMMIT'].to_s.downcase) ||
     !ENV['TRAVIS_BRANCH'].to_s.include?("develop")
   }
+  
+  t.committer = 'naokiy<to_contact@naokiy.net>'
 end
