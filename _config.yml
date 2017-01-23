@@ -17,9 +17,10 @@ title: 手札少なめ
 email: nikusukuname@gmail.com
 description: tefuda.suku.name
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://tefuda.suku.name" # the base hostname & protocol for your site, e.g. http://example.com
+
+timezone: Asia/Tokyo
+encoding: utf-8
 
 # Build settings
 markdown: kramdown
@@ -32,6 +33,9 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - Rakefile
+  - scripts
+
 sass:
   sass_dir: _sass
   style: compressed

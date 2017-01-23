@@ -30,8 +30,9 @@ task :convert_front_matter , [:src] do |t, args|
 end
 
 Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
-  # master branch for machine
-  t.deploy_branch = 'master'
+  
+  t.remote_url = 'git@github.com:naokiy/tefuda.suku.name.git'
+  t.committer = 'naokiy<to_contact@naokiy.net>'
 
   # Skip commit and push when building a pull request or env. variable
   # SKIP_COMMIT represents truthy.
@@ -40,7 +41,4 @@ Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
     %w[yes y true 1].include?(ENV['SKIP_COMMIT'].to_s.downcase) ||
     !ENV['TRAVIS_BRANCH'].to_s.include?("develop")
   }
-  
-  t.remote_url = 'git@github.com:naokiy/tefuda.suku.name.git'
-  t.committer = 'naokiy<to_contact@naokiy.net>'
 end
