@@ -42,6 +42,5 @@ Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
   }
   
   t.remote_url = 'git@github.com:naokiy/tefuda.suku.name.git'
-  
   t.committer = 'naokiy<to_contact@naokiy.net>'
 end
