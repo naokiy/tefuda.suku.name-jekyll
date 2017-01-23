@@ -15,13 +15,13 @@ body {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-header {
+.site-header {
   padding: $margin_width;
   background-color: $color_dark_gray;
   color: $color_white;
   text-align: center;
 
-  h1 {
+  &__title {
     font-size: 400%;
     margin: $margin_width 0 0 0;
     a {
@@ -31,37 +31,43 @@ header {
   }
 }
 
+$post_header_height: 40px;
+$post_header_arrow_width: 10px;
+$post_header_margin: 3px;
+$post_header_arrow_margin_left: 5px;
+$post_header_arrow_margin_right: 10px;
+
 .post {
   margin: 0 ($margin_width + $padding_width);
   padding: 0 0 $padding_width 0;
   background: $color_white;
 
-  .post-title {
+  &__title {
     padding: 0 $padding-width;
   }
   
-  .post-content {
+  &__content {
     padding: 0 $padding_width;
   }
 
-  .post-more-link {
+  &__more-link {
     padding: $padding_width $padding_width 0 $padding_width;
   }  
 
-  .post-header {
+  &__header {
     background-color: $color_light_gray;
     margin: 0;
-    padding: $margin_width $padding_width 3px 0;
+    padding: $margin_width $padding_width $post_header_margin 0;
     line-height: 0;
-    .post-date {
+    &__date {
       display: inline-block;
       background: $color_white;
-      margin: 0 3px 0 0;
-      padding: 0 16px;
-      height: 40px;
-      line-height:40px;
+      margin: 0 $post_header_margin 0 0;
+      padding: 0 $padding_width;
+      height: $post_header_height;
+      line-height: $post_header_height;
     }
-    .post-categories {
+    &__categories {
       display: inline-block;
       list-style: none;
       vertical-align: bottom;
@@ -75,16 +81,16 @@ header {
           background: $color_white;
           box-sizing: border-box;
           display: block;
-          height: 40px;
-          line-height:40px;
-          padding: 0 10px 0 5px;
+          height: $post_header_height;
+          line-height:$post_header_height;
+          padding: 0 $post_header_arrow_margin_right 0 $post_header_arrow_margin_left;
           text-align: center;
-          margin-right: 23px;
+          margin-right: (($post_header_arrow_width * 2) + $post_header_margin);
           position: relative;
         }
         &:first-child {
           a {
-            padding-left:15px;
+            padding-left:$padding_width;
             &:before{
               border:none;
             }
@@ -92,7 +98,7 @@ header {
         }
         &:last-child {
           a {
-            padding-right:15px;
+            padding-right:$padding_width;
             &:after{
               border:none;
             }
@@ -106,12 +112,12 @@ header {
             position:absolute;
             top: 0;
             border:0 solid $color_white;
-            border-width:20px 10px;
+            border-width:($post_header_height / 2) $post_header_arrow_width;
             width: 0;
             height: 0;
           }
           &:before{
-            left:-20px;
+            left:(-1 * ($post_header_arrow_width * 2));
             border-left-color:transparent;
           }
           &:after{
