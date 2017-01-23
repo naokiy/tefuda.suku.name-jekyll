@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="hfeed">
-    <div>Category: {{ page.category }}</div>
+    <div class="category-header">Category: {{ page.category }}</div>
     {% for category_tuple in site.categories %}
     {% assign category_name_candidate = category_tuple | first %}
     {% if category_name_candidate == page.category %}

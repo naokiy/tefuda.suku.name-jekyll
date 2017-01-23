@@ -1,13 +1,5 @@
-$margin_width: 32px;
-$padding_width: 16px;
-
-$color_white: #fff;
-$color_dark_gray: #424242;
-$color_light_gray: #e9e9e9;
-
-$color_yellow: #ff9900;
-$color_dark_yellow: #f68619;
-
+@import 'variables';
+@import 'functions';
 
 body {
   margin: 0;
@@ -24,21 +16,42 @@ body {
   &__title {
     font-size: 400%;
     margin: $margin_width 0 0 0;
+    @include mobile {
+      font-size: 200%;
+      margin: 0;
+    }
     a {
       color: $color_white;
       text-decoration: none;
     }
   }
+  &__lead {
+    margin: 0;
+    padding: $padding-width 0 0 0;
+  } 
 }
 
-$post_header_height: 40px;
-$post_header_arrow_width: 10px;
-$post_header_margin: 3px;
-$post_header_arrow_margin_left: 5px;
-$post_header_arrow_margin_right: 10px;
+.category-header {
+  margin: $margin-width 0 0 0;
+  text-align: center;
+  font-size: 200%;
+  @include mobile {
+    margin: $padding-width 0 0 0;
+    font-size: 100%;
+  }
+}
 
 .post {
-  margin: 0 ($margin_width + $padding_width);
+  @include pc {
+    margin: 0 auto;
+    width: ($breakpoint-tablet - ($margin_width * 2) - ($padding_width * 2));
+  }
+  @include tablet {
+    margin: 0 ($margin_width + $padding_width);
+  }
+  @include mobile {
+    margin: 0;
+  }
   padding: 0 0 $padding_width 0;
   background: $color_white;
 
@@ -48,107 +61,12 @@ $post_header_arrow_margin_right: 10px;
   
   &__content {
     padding: 0 $padding_width;
+    line-height: 1.4;
   }
 
   &__more-link {
     padding: $padding_width $padding_width 0 $padding_width;
   }  
-
-  &__header {
-    background-color: $color_light_gray;
-    margin: 0;
-    padding: $margin_width $padding_width $post_header_margin 0;
-    line-height: 0;
-    &__date {
-      display: inline-block;
-      background: $color_white;
-      margin: 0 $post_header_margin 0 0;
-      padding: 0 $padding_width;
-      height: $post_header_height;
-      line-height: $post_header_height;
-    }
-    &__categories {
-      display: inline-block;
-      list-style: none;
-      vertical-align: bottom;
-      margin: 0;
-      padding: 0;
-      li {
-        float: left;
-        margin: 0;
-        padding: 0;
-        a {
-          background: $color_white;
-          box-sizing: border-box;
-          display: block;
-          height: $post_header_height;
-          line-height:$post_header_height;
-          padding: 0 $post_header_arrow_margin_right 0 $post_header_arrow_margin_left;
-          text-align: center;
-          margin-right: (($post_header_arrow_width * 2) + $post_header_margin);
-          position: relative;
-        }
-        &:first-child {
-          a {
-            padding-left:$padding_width;
-            &:before{
-              border:none;
-            }
-          }
-        }
-        &:last-child {
-          a {
-            padding-right:$padding_width;
-            &:after{
-              border:none;
-            }
-          }
-        }
-        a {   
-          &:before,
-          &:after{
-            box-sizing: border-box;
-            content: "";
-            position:absolute;
-            top: 0;
-            border:0 solid $color_white;
-            border-width:($post_header_height / 2) $post_header_arrow_width;
-            width: 0;
-            height: 0;
-          }
-          &:before{
-            left:(-1 * ($post_header_arrow_width * 2));
-            border-left-color:transparent;
-          }
-          &:after{
-            left:100%;
-            border-color:transparent;
-            border-left-color:$color_white;
-          }
-          &:hover{
-            background-color: $color_yellow;
-           
-            &:before{
-              border-color:$color_yellow;
-              border-left-color:transparent;
-            }
-            &:after{
-              border-left-color:$color_yellow;
-            }
-          }
-          &:active{
-            background-color: $color_dark_yellow;
-        
-            &:before{
-              border-color:$color_dark_yellow;
-              border-left-color:transparent;
-             }
-            &:after{
-              border-left-color:$color_dark_yellow;
-            }
-          }
-        }
-      }
-    }
-  }
 }
+
+@import 'post-header'
