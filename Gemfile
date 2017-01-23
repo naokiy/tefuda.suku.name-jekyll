@@ -9,3 +9,5 @@ gem "jekyll-sitemap"
 gem 'jekyll-default-layout'
 gem "rake"
 gem "rake-jekyll"
+
+gem "safe_yaml"

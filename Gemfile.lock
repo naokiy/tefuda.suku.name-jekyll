@@ -86,6 +86,7 @@ DEPENDENCIES
   minima (~> 2.0)
   rake
   rake-jekyll
+  safe_yaml
 
 RUBY VERSION
    ruby 2.1.9p490
