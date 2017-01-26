@@ -1,0 +1,16 @@
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "{{ include.post.title }}",
+"genre":"{{ include.post.categories }}",
+"keywords":"{{ include.post.tags }}",
+"datePublished": "{{ include.post.date | date: '%Y-%m-%d' }}",
+"url": "{{ include.post.url | prepend: site.baseurl | prepend: site.url }}",
+"mainEntityOfPage":{  
+  "@type":"WebPage",
+  "@id":"{{ include.post.url | prepend: site.baseurl | prepend: site.url }}"
+},
+"articleBody":"{{ include.post.content | strip_html | xml_escape | normalize_whitepace | strip_newlines | strip }}"
+}
+</script>
