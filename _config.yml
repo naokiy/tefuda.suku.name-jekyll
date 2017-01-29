@@ -26,7 +26,6 @@ encoding: utf-8
 markdown: kramdown
 gems:
   - jekyll-feed
-  - jemoji
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-default-layout
