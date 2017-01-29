@@ -7,20 +7,20 @@ require "uri"
 def load_all_mtgjson(dest)
   cd dest do
     sh "rm -rf *"
-    sh "curl -v -X GET https://mtgjson.com/json/SetCodes.json > SetCodes.json"
+    sh "curl -s -X GET https://mtgjson.com/json/SetCodes.json > SetCodes.json"
     File.open("SetCodes.json") do |set_codes_json|
       set_codes = JSON.load(set_codes_json)
       set_codes.each do |set_code|
         sleep (1)
-        sh "curl -v -X GET https://mtgjson.com/json/" + set_code + "-x.json > " + set_code + "-x.json"
+        sh "curl -s -X GET https://mtgjson.com/json/" + set_code + "-x.json > " + set_code + "-x.json"
       end
     end
     sleep (1)
     sh "mkdir -p tmp"
-    sh "curl -v -X GET https://mtgjson.com/json/AllCards-x.json.zip > tmp/AllCards-x.json.zip"
+    sh "curl -s -X GET https://mtgjson.com/json/AllCards-x.json.zip > tmp/AllCards-x.json.zip"
     sh "unzip tmp/AllCards-x.json.zip"
     sleep (1)
-    sh "curl -v -X GET https://mtgjson.com/json/version-full.json > version-full.json"
+    sh "curl -s -X GET https://mtgjson.com/json/version-full.json > version-full.json"
     sh "rm -rf tmp"
   end
 end
