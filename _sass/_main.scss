@@ -69,4 +69,27 @@ body {
   }  
 }
 
-@import 'post-header'
+@import 'post-header';
+
+.mtg-pool, .mtg-deck {
+  margin: 0 (-1 * $padding_width);
+  padding: 0 $padding_width;
+  background: #f9f9f9;
+  border-top: 3px solid $color_light_gray;
+  border-bottom: 3px solid $color_light_gray;
+  
+  .mtg__pile {
+    &__header {
+      margin: 0 (-1 * $padding_width);
+      padding: $padding_width $padding_width 0 $padding_width;
+      font-weight: bold;
+    }
+ 
+    &:not(:first-child) {
+      .mtg__pile__header {
+        border-top: 1px solid $color_light_gray;
+      }
+    }
+  }
+}
+

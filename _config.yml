@@ -36,6 +36,7 @@ exclude:
   - Rakefile
   - scripts
   - vendor
+  - _additional_data
 
 sass:
   sass_dir: _sass
