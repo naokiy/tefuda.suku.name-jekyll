@@ -1,22 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.7.1)
-      i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
-      minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
-      tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     colorator (1.1.0)
     ffi (1.9.17)
     forwardable-extended (2.6.0)
-    gemoji (2.1.0)
-    html-pipeline (2.5.0)
-      activesupport (>= 2)
-      nokogiri (>= 1.4)
-    i18n (0.7.0)
     jekyll (3.3.1)
       addressable (~> 2.4)
       colorator (~> 1.0)
@@ -39,12 +28,6 @@ GEM
       jekyll (~> 3.3)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
-    jemoji (0.7.0)
-      activesupport (~> 4.0)
-      gemoji (~> 2.0)
-      html-pipeline (~> 2.2)
-      jekyll (>= 3.0)
-    json (1.8.6)
     kramdown (1.13.2)
     liquid (3.0.6)
     listen (3.0.8)
@@ -54,7 +37,6 @@ GEM
     mini_portile2 (2.1.0)
     minima (2.1.0)
       jekyll (~> 3.3)
-    minitest (5.10.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pathutil (0.14.0)
@@ -69,9 +51,6 @@ GEM
     rouge (1.11.1)
     safe_yaml (1.0.4)
     sass (3.4.23)
-    thread_safe (0.3.5)
-    tzinfo (1.2.2)
-      thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
@@ -82,8 +61,8 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
   jekyll-paginate
   jekyll-sitemap
-  jemoji
   minima (~> 2.0)
+  nokogiri
   rake
   rake-jekyll
   safe_yaml

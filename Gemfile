@@ -9,4 +9,5 @@ gem 'jekyll-default-layout'
 gem "rake"
 gem "rake-jekyll"
 
+gem "nokogiri"
 gem "safe_yaml"
