@@ -212,5 +212,5 @@ Jekyll::Hooks.register :posts, :post_render do |post|
     pre.add_next_sibling(div_deck)
     pre.remove 
   end
-  post.output = doc.to_s
+  post.output = doc.to_html(save_with: 0)
 end
