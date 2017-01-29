@@ -1,6 +1,6 @@
 _site
 _posts
-_additional_data/*
+_additional_data/mtgjson/*
 .sass-cache
 .jekyll-metadata
 !.gitkeep
