@@ -61,25 +61,40 @@ module MtgList
       pool = plain_list.scan(/^(\d+) (.*)$/)
       pool.each do |cards|
 	quantity = cards[0].to_i
-        card_name = cards[1]
-        card_hash = db.card[card_name]
-        japanese_card_name = db.japanese_card_name(card_name)
-        card = MtgList::Cards.new(card_name, japanese_card_name, quantity)
-        if card_hash['types'].include?('Land')
+        card_name_combined = cards[1]
+        card_names = card_name_combined.split("/")
+        
+        japanese_card_names = []
+        types = []
+        colors = []
+        card_names.each do |card_name|
+          card_hash = db.card[card_name]
+          japanese_card_names.push(db.japanese_card_name(card_name))
+          types.concat(card_hash['types'])
+          if card_hash.has_key?('colors')
+            colors.concat(card_hash['colors'])
+          end
+        end
+        colors = colors.uniq
+        
+        card = MtgList::Cards.new(card_names, japanese_card_names, quantity)
+        
+
+        if types.include?('Land')
           @land_pile.add(card)
-        elsif !card_hash.has_key?('colors') || card_hash['colors'].size < 0
+        elsif colors.size < 0
           @colorless_pile.add(card)
-        elsif card_hash['colors'].size > 1
+        elsif colors.size > 1
           @multicolor_pile.add(card)
-        elsif card_hash['colors'].include?('White')
+        elsif colors.include?('White')
           @white_pile.add(card)
-        elsif card_hash['colors'].include?('Blue')
+        elsif colors.include?('Blue')
           @blue_pile.add(card)
-        elsif card_hash['colors'].include?('Black')
+        elsif colors.include?('Black')
           @black_pile.add(card)
-        elsif card_hash['colors'].include?('Red')
+        elsif colors.include?('Red')
           @red_pile.add(card)
-        elsif card_hash['colors'].include?('Green')
+        elsif colors.include?('Green')
           @green_pile.add(card)
 	end
       end
@@ -105,16 +120,31 @@ module MtgList
       @creature_pile      = MtgList::CardPile.new('クリーチャー')
       @spell_pile       = MtgList::CardPile.new('呪文')
       @sideboard_pile      = MtgList::CardPile.new('サイドボード')
-      pool = plain_list.scan(/^(\d+) (.*)$/)
+      pool = plain_list.scan(/^(\d*) ?(.*)$/)
+      is_side = false
       pool.each do |cards|
+        if cards[0].size == 0
+          is_side = true
+          next
+        end
 	quantity = cards[0].to_i
-        card_name = cards[1]
-        card_hash = db.card[card_name]
-        japanese_card_name = db.japanese_card_name(card_name)
-        card = MtgList::Cards.new(card_name, japanese_card_name, quantity)
-        if card_hash['types'].include?('Land')
+        card_name_combined = cards[1]
+        card_names = card_name_combined.split("/")
+        
+        japanese_card_names = []
+        types = []
+        card_names.each do |card_name|
+          card_hash = db.card[card_name]
+          japanese_card_names.push(db.japanese_card_name(card_name))
+          types.concat(card_hash['types'])
+        end
+        
+        card = MtgList::Cards.new(card_names, japanese_card_names, quantity)
+        if is_side
+          @sideboard_pile.add(card)
+        elsif types.include?('Land')
           @land_pile.add(card)
-        elsif card_hash['types'].include?('Creature')
+        elsif types.include?('Creature')
           @creature_pile.add(card)
         else
           @spell_pile.add(card)
@@ -160,9 +190,9 @@ module MtgList
   end
 
   class Cards
-    def initialize(name, japanese_name, quantity)
-      @name = name
-      @japanese_name = japanese_name
+    def initialize(names, japanese_names, quantity)
+      @name = names.join('+')
+      @japanese_name = japanese_names.join('+')
       @quantity = quantity
     end 
     
