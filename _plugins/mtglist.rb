@@ -120,8 +120,13 @@ module MtgList
       @creature_pile      = MtgList::CardPile.new('クリーチャー')
       @spell_pile       = MtgList::CardPile.new('呪文')
       @sideboard_pile      = MtgList::CardPile.new('サイドボード')
-      pool = plain_list.scan(/^(\d+) (.*)$/)
+      pool = plain_list.scan(/^(\d*) ?(.*)$/)
+      is_side = false
       pool.each do |cards|
+        if cards[0].size == 0
+          is_side = true
+          next
+        end
 	quantity = cards[0].to_i
         card_name_combined = cards[1]
         card_names = card_name_combined.split("/")
@@ -135,7 +140,9 @@ module MtgList
         end
         
         card = MtgList::Cards.new(card_names, japanese_card_names, quantity)
-        if types.include?('Land')
+        if is_side
+          @sideboard_pile.add(card)
+        elsif types.include?('Land')
           @land_pile.add(card)
         elsif types.include?('Creature')
           @creature_pile.add(card)
