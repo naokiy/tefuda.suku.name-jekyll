@@ -11,8 +11,14 @@
   "@type":"WebPage",
   "@id":"{{ include.post.url | prepend: site.baseurl | prepend: site.url }}"
 },
-"author":"{{ include.post.author }}",
-"publisher":"{{ site.title }}",
+"author": {
+  "@type": "Person",
+  "name": "sukuname"
+},
+"publisher": {
+  "@type": "Organization",
+  "name": "{{ site.title }}"
+},
 "image": {
   "@type": "ImageObject",
   "url": "{{site.url}}/images/tefuda.suku.name.png",
