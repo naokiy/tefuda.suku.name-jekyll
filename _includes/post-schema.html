@@ -11,6 +11,14 @@
   "@type":"WebPage",
   "@id":"{{ include.post.url | prepend: site.baseurl | prepend: site.url }}"
 },
+"author":"{{ include.post.author }}",
+"publisher":"{{ site.title }}",
+"image": {
+  "@type": "ImageObject",
+  "url": "{{site.url}}/images/tefuda.suku.name.png",
+  "height": 440,
+  "width": 770
+},
 "articleBody":"{{ include.post.content | strip_html | xml_escape | normalize_whitepace | strip_newlines | strip }}"
 }
 </script>
