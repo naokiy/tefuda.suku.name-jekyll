@@ -4,7 +4,7 @@
 "@type": "BlogPosting",
 "headline": "{{ include.post.title }}",
 "genre":[{% for category in include.post.categories %}"{{ category | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
-"keywords":[{% for tags in include.post.tags %}"{{ tag | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+"keywords":[{% for tag in include.post.tags %}"{{ tag | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
 "datePublished": "{{ include.post.date | date: '%Y-%m-%d' }}",
 "url": "{{ include.post.url | prepend: site.baseurl | prepend: site.url }}",
 "mainEntityOfPage":{  
