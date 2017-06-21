@@ -6,6 +6,7 @@ gem "jekyll-feed", "~> 0.6"
 gem "jekyll-paginate"
 gem "jekyll-sitemap"
 gem 'jekyll-default-layout'
+gem "jekyll-redirect-from"
 gem "rake"
 gem "rake-jekyll"
 

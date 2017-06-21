@@ -29,6 +29,7 @@ gems:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-default-layout
+  - jekyll-redirect-from
 exclude:
   - Gemfile
   - Gemfile.lock
