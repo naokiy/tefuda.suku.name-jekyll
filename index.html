@@ -14,7 +14,11 @@ title: Home
     <!-- Pagination links -->
     <div class="pager">
         {% if paginator.previous_page %}
-        <a href="/page/{{ paginator.previous_page }}/" class="pager__previous-link">新しい記事へ</a>
+            {% if paginator.previous_page == 1 %}
+                <a href="{{ site.url }}" class="pager__previous-link">新しい記事へ</a>
+            {% else %}
+                <a href="/page/{{ paginator.previous_page }}/" class="pager__previous-link">新しい記事へ</a>
+            {% endif %}
         {% endif %}
         {% if paginator.previous_page or paginator.next_page %}
         <span class="pager__page-number">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
