@@ -1,6 +1,7 @@
 {% capture post_header %}
 <div class="post__header">
-<p class="post__header__date published"><time datetime="{{ include.post.date | date: '%Y-%m-%d %H:%M:%S'}}">{{ include.post.date | date: "%Y-%m-%d" }}</time></p>
+<address class="post__header__author author vcard"><span class="nickname">sukuname</span></address>
+<p class="post__header__date published updated"><time datetime="{{ include.post.date | date: '%Y-%m-%d %H:%M:%S'}}">{{ include.post.date | date: "%Y-%m-%d" }}</time></p>
 <ol class="post__header__categories">
 {% for category in include.post.categories %}
 <li><a href="{{ category | uri_escape | prepend: '/categories/' | prepend: site.baseurl | prepend: site.url }}/">{{ category }}</a></li>
