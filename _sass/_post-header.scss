@@ -11,6 +11,9 @@ $post_header_arrow_margin_right: 10px;
     margin: $margin_width 0 0 0;
     padding: $padding_width $padding_width 0 $padding_width;
     line-height: 1.3;
+    &__author {
+      display: none;
+    }
     &__date {
       display: inline-block;
       margin: 0;
@@ -54,6 +57,9 @@ $post_header_arrow_margin_right: 10px;
     margin: 0;
     padding: $margin_width $padding_width $post_header_margin 0;
     line-height: 0;
+    &__author {
+      display: none;
+    }
     &__date {
       display: inline-block;
       background: $color_white;
