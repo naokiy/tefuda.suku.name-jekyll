@@ -1,0 +1,17 @@
+@import 'variables';
+@import 'functions';
+
+.pager {
+  @include pc {
+    margin: $margin_width auto;
+    width: ($breakpoint-tablet - ($margin_width * 2) - ($padding_width * 4));
+  }
+  @include tablet {
+    margin: $margin_width ($margin_width + $padding_width);
+  }
+  @include mobile {
+    margin: $margin_width 0;
+  }
+  padding: $padding_width;
+  background: $color_white;
+}
