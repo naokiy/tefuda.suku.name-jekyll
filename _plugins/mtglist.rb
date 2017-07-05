@@ -201,7 +201,7 @@ module MtgList
     end
 
     def full_name
-      if @japanese_name.nil?
+      if @japanese_name.nil? || @japanese_name.empty?
         '《' + @name + '》'
       else
         '《' + @japanese_name + '/' + @name + '》'
