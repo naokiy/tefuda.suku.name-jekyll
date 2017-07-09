@@ -30,6 +30,9 @@ module MtgList
 
     def japanese_card_name(card_name)
       card = @@all_hash[card_name]
+      if card.nil?
+        Jekyll.logger.error ("Missing card! " + card_name)
+      end
       sets = card['printings']
       sets.each do |set_name|
         set_hash = set(set_name)
