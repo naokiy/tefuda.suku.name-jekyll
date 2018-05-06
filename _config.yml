@@ -17,7 +17,7 @@ title: 手札少なめ
 email: nikusukuname@gmail.com
 description: tefuda.suku.name
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://tefuda.suku.name" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://tefuda.suku.name" # the base hostname & protocol for your site, e.g. http://example.com
 
 timezone: Asia/Tokyo
 encoding: utf-8
